@@ -52,7 +52,9 @@ public class Stdin extends OperationConstans implements InstructionsConstants {
 			report = MoveFactory.calculate_Report();
 
 		} catch (InputMismatchException e) {
-			System.out.println("Invalid command: " + e);
+			System.out.println("Error: invalid input. Dimensions should be digits only.");
+			inputError = true;
+			errorReport = "Error: invalid input. Dimensiond should be digits only. ";
 		}
 	}
 

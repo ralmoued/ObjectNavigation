@@ -35,9 +35,17 @@ public class MoveFactory extends OperationConstans implements InstructionsConsta
 	}
 
 	public String creatObjectNavigation(int wide, int deep, int xStart, int yStart, String direction) {
-
-		board = new String[wide][deep];
-		location = new String[wide][deep];
+		try {
+			board = new String[wide][deep];
+			location = new String[wide][deep];
+		} catch (NegativeArraySizeException N) {
+			System.out.println("Error: invalid input. Matrix dimensions can not be negative.");
+			inputError = true;
+			errorReport = "Error: invalid input. Matrix dimensions can not be negative. ";
+			xStart = -1;
+			yStart = -1;
+			direction = "";
+		}
 
 		if (xStart < 0 || xStart > wide || yStart < 0 || yStart > deep) {
 			System.out.println("Error: invalid inputs. Object's Initial location is out of the border");
